@@ -97,6 +97,7 @@
                     <div class="invalid-feedback">สำเนาทะเบียนบ้านของ นักเรียน </div>
                 </div>
                 <hr>
+    
                 <div class="text-start">
                     <span class="fw-bold">สำเนาทะเบียนบ้านของ บิดา <?php if($row_file_check['confirm02_file02_status'] != 0 ){ echo '<span class="text-success bg-warning">ส่งเอกสารแล้ว</span>';}?></span></span>
                 </div>
@@ -145,7 +146,7 @@
 
     <?php
     // START UPLOAD
-    if (isset($_FILES['file01']) || isset($_FILES['file02']) || isset($_FILES['file03']) || isset($_FILES['file04']) ||isset($_FILES['file06']) || isset($_FILES['file06']) ) {
+    if (isset($_FILES['file01']) || isset($_FILES['file02']) || isset($_FILES['file03']) || isset($_FILES['file04']) ||isset($_FILES['file05']) || isset($_FILES['file06']) ) {
 
         // <li>สำเนาทะเบียนบ้านของ นักเรียน </li>
 

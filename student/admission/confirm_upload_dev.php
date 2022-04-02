@@ -64,7 +64,7 @@
                 </h2>
             <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                 <div class="accordion-body">
-                
+
                     <p>1 .หลักฐานเอกสารที่ใช้ในการมอบตัวออนไลน์ ประกอบด้วย</p>
                     <ul>
                         <li>หลักฐานการจ่ายเงิน</li>
@@ -82,7 +82,7 @@
                 </div>
             </div>
         </div>
-        
+        <?php echo $_SESSION['ref1'] . "<br>";?>
         
         <form action="" method="post" class="row g-3 pb-4 needs-validation" novalidate enctype="multipart/form-data">
             
@@ -94,7 +94,7 @@
                     <?php 
                         if($row_file_check['payment'] == 0 ){ 
                             echo "required";
-                        }elseif($row_file_check['payment'] == 2 ){ echo "disabled";}
+                        }elseif($row_file_check['payment'] == 2 ){ echo "";}
                     ?>                    
                     
                     >
@@ -169,9 +169,10 @@
         $file_payment_extension = pathinfo(basename($_FILES['payment']['name']), PATHINFO_EXTENSION);
         
         if ($file_payment_extension != "") {
-            $new_file_payment_name = $_SESSION['ref1'] . "-payment." . $file_payment_extension;
+            $new_file_payment_name = $_SESSION['ref1'] . "-payment-dev." . $file_payment_extension;
             $file_payment_path     = "/var/www/html/admission/confirm/";
             $upload_path_payment   = $file_payment_path . $new_file_payment_name;
+
             $file_payment_status = 1;
         } else {
             $file_payment_status = 0;
@@ -353,8 +354,8 @@
             $sql_payment .= ", payment = '" . $file_payment_status . "'";
             $sql_payment .= " WHERE  ref1 = '" . $_SESSION['ref1'] . "'";
             try{
-                $f1 = $conn->prepare($sql_payment);
-                $f1->execute();
+                // $payment = $conn->prepare($sql_payment);
+                // $payment->execute();
                 echo "
                 <div class='alert alert-success text-center pt-4' role='alert'>
                 ส่งหลักฐานการชำระค่าบำรุงการศึกษา  สำเร็จ <i class='bx bx-check-circle'></i>
