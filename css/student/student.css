@@ -1,0 +1,213 @@
+@import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;700&display=swap');
+* {
+    /* font-family: 'Poppins', sans-serif; */
+    font-family: 'Sarabun', sans-serif;
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* =======  color ====== */
+    --body-color: #E4E9F7;
+    --sidebar-color: #FFF;
+    --primary-color: #695CFE;
+    --primary-color-light: #F6F5FF;
+    --toggle-color: #DDD;
+    --text-color-01: #FFFFFF;
+    --text-color-02: #707070;
+    --text-color-03: #09078d;
+    --title-color-01: #09078d;
+    --title-color-02: #000000;
+    --table-border-color: #707070;
+    --linear-gradient-01: #00c6ff 0%;
+    --linear-gradient-02: #0072ff 51%;
+    --linear-gradient-03: #00c6ff 100%;
+    --btn-bg: #ffffff;
+    --btn-bg-default: #02247d;
+    --btn-color: #ffffff;
+    --btn-dark-blue: #00257E;
+    --btn-dark-grey: #666D78;
+    --btn-dark-red: #D91F28;
+    --btn-dark-yellow: #F8B212;
+    --btn-dark-green-01: #67A26A;
+    --btn-dark-green-02: #06d410;
+    --btn-dark-purple: #573E8C;
+    --btn-dark-pink: #F25E6B;
+    /* =======  transition ====== */
+    --tran-02: all 0.2s ease;
+    --tran-03: all 0.3s ease;
+    --tran-04: all 0.4s ease;
+    --tran-05: all 0.5s ease;
+    --btn-shadow: 0 0 10px #ffffff;
+}
+
+body {
+    height: 100vh;
+    background: var(--body-color);
+    transition: var(--tran-05);
+}
+
+.title {
+    font-size: calc(1.375rem + 0.6vw);
+}
+
+@media (min-width: 1200px) {
+    .title {
+        font-size: 2rem;
+    }
+}
+
+.button {
+    background-image: linear-gradient(to right, var(--linear-gradient-01), var(--linear-gradient-02), var(--linear-gradient-03));
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: var(--btn-bg);
+    box-shadow: var(--btn-shadow);
+    border-radius: 10px;
+    display: block;
+    border-radius: 15px;
+    border: none;
+    padding: 15px 45px;
+    /* text-align: center; */
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.button:hover {
+    background-position: right center;
+    color: var(--btn-bg);
+    text-decoration: none;
+}
+
+.link_btn {
+    padding-top: 50px;
+    /* text-align: center; */
+}
+
+.logo {
+    text-align: center;
+}
+
+.logo img {
+    width: 80px;
+    height: 100px;
+}
+
+.explanation {
+    padding: 10px;
+    /* max-width: 600px; */
+    p {
+        max-width: 300px;
+        color: #fff;
+        font-size: 0.8rem;
+    }
+}
+
+.followMeBar {
+    background: var(--title-color-01);
+    /* background: linear-gradient(to right, var(--linear-gradient-01), var(--linear-gradient-02), var(--linear-gradient-03)); */
+    padding: 10px 20px;
+    position: relative;
+    z-index: 1;
+    color: var(--text-color-01);
+    font-size: calc(1rem + 0.2vw);
+}
+
+.followMeBar.fixed {
+    position: fixed;
+    top: 0;
+    width: 80%;
+    box-sizing: border-box;
+    z-index: 0;
+}
+
+.followMeBar.fixed.absolute {
+    position: absolute;
+}
+
+.btn-container .col {
+    text-align: center;
+}
+
+.btn-edit>div {
+    width: 100%;
+}
+
+.btn-edit .topic {
+    width: 100%;
+    display: inline-block;
+}
+
+.btn-edit .topic::after {
+    content: '';
+    float: right;
+}
+
+.btn-edit .topic2 {
+    width: 100%;
+    display: inline-block;
+}
+
+.btn-edit .topic2::after {
+    content: '';
+    float: right;
+}
+
+.btn-container a {
+    margin: 0 auto;
+}
+
+.btn-edit {
+    padding: 8px 32px;
+    color: var(--btn-color);
+    background: var(--btn-bg-default);
+    max-width: 380px;
+    width: 100%;
+    height: 58px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-edit:hover {
+    color: var(--btn-color);
+}
+
+.btn-edit.dark-blue {
+    background-color: var(--btn-dark-blue);
+}
+
+.btn-edit.grey {
+    background-color: var(--btn-dark-grey);
+}
+
+.btn-edit.red {
+    background-color: var(--btn-dark-red);
+}
+
+.btn-edit.yellow {
+    background-color: var(--btn-dark-yellow);
+}
+
+.btn-edit.green01 {
+    background-color: var(--btn-dark-green-01);
+}
+
+.btn-edit.green02 {
+    background-color: var(--btn-dark-green-02);
+}
+
+.btn-edit.purple {
+    background-color: var(--btn-dark-purple);
+}
+
+.btn-edit.pink {
+    background-color: var(--btn-dark-pink);
+}
+
+.btn-edit .note {
+    font-size: 70%;
+}

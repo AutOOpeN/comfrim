@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css?family=Prompt&display=swap');
+body {
+  /*background-image: url('http://www.satreephuket.ac.th/academic/ent_62/ent62_calendar.jpg');*/
+  font-family: Prompt;
+  background-image: linear-gradient(white, lightblue);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center; 
+}
+.responsive {
+    width: 100%;
+    height: auto;
+  }
+  .container-top {
+    position: relative;
+    max-width: 1024px; /* Maximum width */
+    margin: 0 auto; /* Center it */
+  }
+  .footer {
+    /*
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;*/
+    line-height: 60px; /* Vertically center the text there */
+    background-color: hsla(215, 30%, 74%, 0.774);
+    padding: 1rem;
+    text-align: center;
+}
+fieldset.myfieldset {
+    border: 1px groove #ddd !important;
+    padding: 0 1.4em 1.4em 1.4em !important;
+    margin: 0 0 1.5em 0 !important;
+    background-color: #f4f3fcf1;
+    -webkit-box-shadow:  0px 0px 0px 0px #000;
+            box-shadow:  0px 0px 0px 0px #000;
+}
+
+    legend.myfieldset {
+        font-size: 1.2em !important;
+        font-weight: bold !important;
+        text-align: left !important;
+        width:auto;
+        padding:0 10px;
+        border-bottom:none;
+    }        

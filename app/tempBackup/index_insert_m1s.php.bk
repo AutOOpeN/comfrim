@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>ระบบรับนักเรียน ม. 1 โครงการพิเศษ ปีการศึกษา 2562</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" type="text/css" href="../bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <script language=Javascript>
+        function Inint_AJAX() {
+           try { return new ActiveXObject("Msxml2.XMLHTTP");  } catch(e) {} //IE
+           try { return new ActiveXObject("Microsoft.XMLHTTP"); } catch(e) {} //IE
+           try { return new XMLHttpRequest();          } catch(e) {} //Native Javascript
+           alert("XMLHttpRequest not supported");
+           return null;
+        };
+
+        function dochange(src, val) {
+             var req = Inint_AJAX();
+             req.onreadystatechange = function () {
+                  if (req.readyState==4) {
+                       if (req.status==200) {
+                            document.getElementById(src).innerHTML=req.responseText; //รับค่ากลับมา
+                       } // End If
+                  } // End If
+             }; // End Function
+             req.open("GET", "localtion.php?data="+src+"&val="+val); //สร้าง connection
+             req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=utf-8"); // set Header
+             req.send(null); //ส่งค่า
+        } window.onLoad=dochange('province', -1);
+        // =========================================================================================
+        function dochange_3(src_3, val_3) {
+             var req = Inint_AJAX();
+             req.onreadystatechange = function () {
+                  if (req.readyState==4) {
+                       if (req.status==200) {
+                            document.getElementById(src_3).innerHTML=req.responseText; //รับค่ากลับมา
+                       } // End If
+                  } // End If
+             };
+             req.open("GET", "localtion_3.php?data="+src_3+"&val="+val_3); //สร้าง connection
+             req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=utf-8"); // set Header
+             req.send(null); //ส่งค่า
+        } window.onLoad=dochange_3('province_3', -1);
+        // =========================================================================================
+    </script>
+    <body>
+        <section class="jumbotron text-center">
+            <div class="container">
+                <img src="../spkimg/head1.gif" class ="img-fluid pull-center">
+                <h1 class="jumbotron-heading">ระบบรับนักเรียนปีการศึกษา 2562 </h1>
+                <p class="lead text-muted">ใบสมัครเข้าศึกษาโครงการห้องเรียนพิเศษ โรงเรียนสตรีภูเก็ต </p>
+                <p class="lead text-muted">ชั้นมัธยมศึกษาปีที่ 1 ปีการศึกษา 2562</p>
+            </div>      
+        </section>
+      
+        <div class="container">
+
+            <form class="needs-validation" novalidate>
+
+                <fieldset class="myfieldset">
+                    <legend class="myfieldset">รายละเอียดผู้สมัคร</legend>
+                    <div class="form-row">
+                        <div class="col-md4 mb-3">
+                            <label for="myOption">คำนำหน้านาม: </label>
+                            <select id="myOption" class="custom-select" onchange="setValue(this,'xm1s010','xm1s011')" required>
+                                <option value="">เลือกคำนำหน้านาม</option>
+                                <option value="1">เด็กชาย</option>
+                                <option value="2">เด็กหญิง</option>
+                            </select>
+                            <input type="hidden" name="xm1s010" id="xm1s010" size="2">
+                            <input type="hidden" name="xm1s011" id="xm1s011" size="2">
+                            <script type="text/javascript">
+                                function setValue(e, target10, target11) {
+                                    var seclectedText = e.options[e.selectedIndex].text;
+                                    document.getElementById(target10).value = seclectedText;
+
+                                    var seclectedValue = e.value;
+                                    document.getElementById(target11).value = seclectedValue;
+                                }
+                            </script>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="sm1s020">ชื่อ: </label>
+                            <input id="xm1s020" type="text" class="form-control " name="xm1s020" size="35" placeholder="ชื่อผู้สมัคร *" required>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="xm1s030">นามสกุล: </label>
+                            <input type="text" class="form-control " name="xm1s030" size="35" placeholder="นามสกุลผู้สมัคร *" required>
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="xm1s003">เลขบัตรประชาชน: </label>
+                        <input type="text" class="form-control " name="xm1s003" size="15" maxlength="13" placeholder="เลขบัตรประชาชน *" required>
+
+                        <label for="xm1s004">เลขหนังสือเดินทาง: </label>
+                        <input type="text" class="form-control " name="xm1s004" size="15" maxlength="13" placeholder="เลขหนังสือเดินทาง">
+
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-4 mb-3">
+                            <label for="myOptionDD">เกิดวันที่ </label>
+                            <select id="myOptionDD" class="custom-select" onchange="setValueDD(this,'xm1s040dd','xm1s041dd')" required>
+                                <option value="">-วันที่-</option>
+                                <?php
+for ($i = 1; $i <= 31; $i++) {
+    if ($i < 10) {
+        echo "<option value='0" . $i . "'>0" . $i . "</option>";
+    } else {
+        echo "<option value='" . $i . "'>" . $i . "</option>";
+    }
+
+}
+?>
+                            </select>
+                            <input type="hidden" name="xm1s040dd" id="xm1s040dd" size="2">
+                            <input type="hidden" name="xm1s041dd" id="xm1s041dd" size="2">
+
+                            <script type="text/javascript">
+                                function setValueDD(e, target40dd, target41dd) {
+                                    var seclectedText = e.options[e.selectedIndex].text;
+                                    document.getElementById(target40dd).value = seclectedText;
+
+                                    var seclectedValue = e.value;
+                                    document.getElementById(target41dd).value = seclectedValue;
+                                }
+                            </script>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                        <label for="myOptionMM">เดือน</label>
+                        <select id="myOptionMM" class="custom-select" onchange="setValueMM(this,'xm1s040mm','xm1s041mm')" required>
+                            <option value="">-เดือน-</option>
+                            <option value="01">มกราคม</option>
+                            <option value="02">กุมภาพันธ์</option>
+                            <option value="03">มีนาคม</option>
+                            <option value="04">เมษายน</option>
+                            <option value="05">พฤษภาคม</option>
+                            <option value="06">มิถุนายน</option>
+                            <option value="07">กรกฎาคม</option>
+                            <option value="08">สิงหาคม</option>
+                            <option value="09">กันยายน</option>
+                            <option value="10">ตุลาคม</option>
+                            <option value="11">พฤศจิกายน</option>
+                            <option value="12">ธันวาคม</option>
+                        </select>
+
+                        <input type="hidden" name="xm1s040mm" id="xm1s040mm" size="15">
+                        <input type="hidden" name="xm1s041mm" id="xm1s041mm" size="15">
+                        <script type="text/javascript">
+                            function setValueMM(e, target40mm, target41mm) {
+                                var seclectedText = e.options[e.selectedIndex].text;
+                                document.getElementById(target40mm).value = seclectedText;
+
+                                var seclectedValue = e.value;
+                                document.getElementById(target41mm).value = seclectedValue;
+                            }
+                        </script>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                        <label for="myOptionYY">ปี พ.ศ. </label>
+                        <select id="myOptionYY" class="custom-select" onchange="setValueYY(this,'xm1s040yy','xm1s041yy')" required>
+                            <option value="" >-พ.ศ.-</option>
+                            <option value="2546">2546</option>
+                            <option value="2547">2547</option>
+                            <option value="2548">2548</option>
+                            <option value="2549">2549</option>
+                            <option value="2550">2550</option>
+                            <option value="2551">2551</option>
+                        </select>
+                        <input type="hidden" name="xm1s040yy" id="xm1s040yy" size="10">
+                        <input type="hidden" name="xm1s041yy" id="xm1s041yy" size="10">
+
+                        <script type="text/javascript">
+                            function setValueYY(e, target40yy, target41yy) {
+                                var seclectedText = e.options[e.selectedIndex].text;
+                                document.getElementById(target40yy).value = seclectedText;
+
+                                var seclectedValue = e.value;
+                                document.getElementById(target41yy).value = seclectedValue;
+                            }
+                        </script>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="xm1s005">E-mail: </label>
+                        <input type="text" class="form-control " name="xm1s005" size="35" placeholder="Email Address" required>
+                    </div>
+                </fieldset>
+
+                <fieldset class="myfieldset">
+                    <legend class="myfieldset">ที่อยู่ ปัจจุบัน</legend>
+                    <div class="form-row">
+                        <div class="col-md-4 mb-3">
+                            <label for="xm1s050">เลขที่: </label>
+                            <input type="text" class="form-control" name="xm1s050" size="15" placeholder="เลขที่ *" required>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="xm1s060">ถนน: </label>
+                            <input type="text" class="form-control" name="xm1s060" size="35" placeholder="ถนน *" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-4 mb-3">
+
+                                <label for="prov11">จังหวัด : * </label>
+                                <!-- <span id="province"> -->
+                                <span id="province">
+                                    <select id="prov11" class="custom-select" required>
+                                        <option value="">- เลือกจังหวัด -</option>
+                                    </select>
+                                </span>
+
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="amphur">อำเภอ : *</label>
+                            <span id="amphur">
+                                <select class="custom-select" required>
+                                    <option value="">- เลือกอำเภอ -</option>
+                                </select>
+                            </span>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="district">ตำบล : * </label>
+                            <span id="district">
+                                <select class="custom-select" required>
+                                    <option value=''>- เลือกตำบล -</option>
+                                </select>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-4 mb-3">
+                            <label for="xm1s100">รหัสไปรษณีย์ </label>
+                            <input type="text" name="xm1s100" size="15" class="form-control" required>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="xm1s110"> โทร </label>
+                            <input type="text" name="xm1s110" size="15" class="form-control" required>
+                        </div>
+                    </div>
+
+                </fieldset>
+
+                <fieldset class="myfieldset">
+
+                    <legend class="myfieldset">ข้อมูล บิดา </legend>
+                    <div class="form-row">
+                        <div class="col-md-4 mb-3">
+                            <label for="xm1s120">ชื่อ: </label>
+                            <input type="text" name="xm1s120" size="35" class="form-control" required>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="xm1s130">นามสกุล: </label>
+                            <input type="text" name="xm1s130" size="35" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-4 mb-3">
+                            <label for="xm1s140">อาชีพ: </label>
+                            <input type="text" name="xm1s140" size="35" class="form-control" required>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="xm1s150">โทร: </label>
+                            <input type="text" name="xm1s150" size="35" class="form-control" required>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset class="myfieldset">
+                    <legend class="myfieldset">ข้อมูล มารดา</legend>
+                    <div class="form-row">
+                        <div class="col-md-4 mb-3">
+                           <label for="xm1s160">คำนำหน้านาม</label>
+                           <input type="text" name="xm1s160" size="10" class="form-control" required>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="xm1s170">ชื่อ: </label>
+                            <input type="text" name="xm1s170" size="35" class="form-control" required>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="xm1s180">สกุล: </label>
+                            <input type="text" name="xm1s180" size="35"  class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-4 mb-3">
+                            <label for="xm1s190">อาชีพ: </label>
+                            <input type="text" name="xm1s190" size="35" class="form-control" required>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="xm1s200">โทร: </label>
+                            <input type="text" name="xm1s200" size="35" class="form-control" required>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset class="myfieldset">
+                    <legend class="myfieldset">ข้อมูล ผู้ปกครอง </legend>
+                    <div class="form-row">
+                        <div class="col-md-4 mb-3">
+                           <label for="xm1s210">คำนำหน้านาม</label>
+                           <input type="text" name="xm1s210" size="10" class="form-control" required>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="xm1s220">ชื่อ: </label>
+                            <input type="text" name="xm1s220" size="35" class="form-control" required>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="xm1s230">สกุล: </label>
+                            <input type="text" name="xm1s230" size="35"  class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-4 mb-3">
+                            <label for="xm1s240">เกี่ยวข้องกับนักเรียน: </label>
+                            <input type="text" name="xm1s240" size="35"  class="form-control" required>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="xm1s250">โทร: </label>
+                            <input type="text" name="xm1s250" size="35"  class="form-control" required>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset class="myfieldset">
+                    <legend class="myfieldset">กำลังศึกษาชั้น ป. 6 หรือจบ ป. 6 </legend>
+                        <div class="form-row">
+                            <div class="col-md-4 mb-3">
+                                <label for="xm1s260">จากโรงเรียน: </label>
+                                <input type="text" name="xm1s260" size="35"  class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-4 mb-3">
+                                จังหวัด :
+                                <!-- <span id="province"> -->
+                                <span id="province_3">
+                                    <select class="custom-select" required>
+                                        <option value=''>- เลือกจังหวัด -</option>
+                                    </select>
+                                </span>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                อำเภอ :
+                                <span id="amphur_3">
+                                    <select class="custom-select" required>
+                                        <option value=''>- เลือกอำเภอ -</option>
+                                    </select>
+                                </span>
+                            </div>
+                        </div>
+                </fieldset>
+
+                <fieldset class="myfieldset">
+                    <legend class="myfieldset">สมัครโครงการ (สมัครได้เพียง 1 โครงการ) </legend>
+                    <div class="custom-control custom-radio mb-3">
+                        <input class="custom-control-input" type="radio" name="xm1s290" id="radio2901"  value ="1" required>
+                        <label class="custom-control-label" for="radio2901"> SMTE ผลการเรียนเฉลี่ยชั้นประถมศึกษาปีที่ 4 และ 5 ดังนี้
+                        </label>
+                    </div>
+                    <fieldset class="submyfieldset">
+                        <legend>โครงการ:</legend>
+                        วิชาคณิตศาสตร์พื้นฐาน <input type="text" name="xm1s300">
+                        วิทยาศาสตร์พื้นฐาน <input type="text" name="xm1s310">
+                        ผลการเรียนเฉลี่ยรวม <input type="text" name="xm1s320">
+                    </fieldset>
+
+                    <div class="custom-control custom-radio mb-3">
+                        <input class="custom-control-input" type="radio" name="xm1s290" value="2" id="radio2902" required>
+                        <label class="custom-control-label" for="radio2902">IP แผนการเรียน ภาษาอังกฤษ - คณิตศาสตร์ </label>
+                    </div>
+                    <div class="custom-control custom-radio mb-3">
+                        <input class="custom-control-input" type="radio" name="xm1s290" value="3" id="radio2903" required>
+                        <label class="custom-control-label" for="radio2903">IP แผนการเรียน วิทยาศาสตร์ - คณิตศาสตร์</label>
+                    </div>
+                    <div class="custom-control custom-radio mb-3">
+                        <input class="custom-control-input" type="radio" name="xm1s290" value="4" id="radio2904" required>
+                        <label class="custom-control-label" for="radio2904">IPC แผนการเรียน Cambridge </label>
+                    </div>
+                    <div class="custom-control custom-radio mb-3">
+
+                        ผู้สมัครโครงการ IP เลือกข้อสอบ : <br><br>
+
+                        <input class="custom-control-input" type="radio" name="xm1s330" value="th" id="radioth" required> 
+                        <label for="radioth" class="custom-control-label">ภาษาไทย</label>
+                    </div>
+                    <div class="custom-control custom-radio mb-3">
+                        <input class="custom-control-input" type="radio" name="xm1s330" value="eng" id="radioeng" required> 
+                        <label for="radioeng" class="custom-control-label">ภาษาอังกฤษ </label>
+                    </div>
+                </fieldset>
+
+                <fieldset class="myfieldset">
+                    <legend class="myfieldset">หลักฐานการสมัคร (เอกสาร Upload)</legend>
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="customFile1" required>
+                        <label class="custom-file-label" for="customFile1"> รูปถ่าย </label>
+                    </div>
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="customFile2" required>
+                        <label class="custom-file-label" for="customFile2">  หนังสือรับรองผลการเรียนวิชาวิทยาศาสตร์และคณิตศาสตร์ หรือ ปพ. 1 (โครงการ SMTE) </label>
+                    </div>
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="customFile3" required>
+                        <label class="custom-file-label" for="customFile3"> เอกสารความเป็นนักเรียน (โครงการ IP) </label>
+                    </div>
+                </fieldset>
+
+                <button class="btn btn-primary" type="submit">ส่งใบสมัคร</button>
+            </form>
+
+            <script>
+                // Example starter JavaScript for disabling form submissions if there are invalid fields
+                (function() {
+                    'use strict';
+                    window.addEventListener('load', function() {
+                        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                        var forms = document.getElementsByClassName('needs-validation');
+                        // Loop over them and prevent submission
+                        var validation = Array.prototype.filter.call(forms, function(form) {
+                        form.addEventListener('submit', function(event) {
+                            if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                            alert("กรุณากรอกข้อมูลให้ครบ (ช่องที่มีกรอบสีแดง)");
+                            }
+                            form.classList.add('was-validated');
+
+                        }, false);
+                        });
+                    }, false);
+                })();
+            </script>
+        </div>
+
+    </div>
+        <!--<h2>CSS Layout Float</h2>-->
+        <!--<p>In this example, we have created a header, two columns/boxes and a footer. On smaller screens, the columns will stack on top of each other.</p>-->
+        <!--<p>Resize the browser window to see the responsive effect (you will learn more about this in our next chapter - HTML Responsive.)</p>-->
+        <header>
+            <h2><img src="../spkimg/head1.gif" alt="Girl in a jacket" width="100%" height="150"></h2>
+        </header>
+        <section>
+            <article>
+                <h2><center>ระบบรับนักเรียน ปีการศึกษา 2562</center></h2> <br>
+                <h3><center>ใบสมัครเข้าศึกษาโครงการห้องเรียนพิเศษ โรงเรียนสตรีภูเก็ต</center></h3>
+                <h3><center>ชั้นมัธยมศึกษาปีที่ 1 ปีการศึกษา 2562</center></h3>
+                <p><span class="error">* required field</span></p>
+                <form method="post" action="insert_spkentrance.php" onsubmit="return confirm('โปรดยืนยันการสมัคร');">
+                    1. รายละเอียดผู้สมัคร <br><br>
+                    &emsp; คำนำหน้านาม
+                    <select id="myOption" onchange="setValue(this,'xm1s010','xm1s011')">
+                        <option selected>-คำนำหน้านาม-</option>
+                        <option value="1">เด็กชาย</option>
+                        <option value="2">เด็กหญิง</option>
+                    </select>
+                    <input type="hidden" name="xm1s010" id="xm1s010" size="2">
+                    <input type="hidden" name="xm1s011" id="xm1s011" size="2">
+
+                    <script type="text/javascript">
+                        function setValue(e, target10, target11) {
+                            var seclectedText = e.options[e.selectedIndex].text;
+                            document.getElementById(target10).value = seclectedText;
+
+                            var seclectedValue = e.value;
+                            document.getElementById(target11).value = seclectedValue;
+                        }
+                    </script>
+
+                    &nbsp&nbsp ชื่อ  &nbsp &nbsp <input type="text" name="xm1s020" size="35" placeholder="ชื่อผู้สมัคร">
+                    <span class="error">* <?php echo $emailErr; ?></span>
+
+                    &nbsp&nbsp สกุล &nbsp <input type="text" name="xm1s030" size="35" placeholder="นามสกุลผู้สมัคร">
+                    <span class="error">* <?php echo $emailErr; ?></span>
+                    <br><br>
+
+                    &emsp; เลขประชาชน <input type="text" name="xm1s003" size="15" maxlength="13" placeholder="เลขประชาชน">
+                    <span class="error">* <?php echo $emailErr; ?></span>
+
+                    เลขหนังสือเดินทาง &emsp; <input type="text" name="xm1s004" size="15" maxlength="13">
+                    <span class="error">* <?php echo $emailErr; ?></span>
+                    <br><br>
+                    <!-- ===========================================================================================
+                    &emsp; วัน เดือน ปี เกิด <input type="text" name="xm1s040" size="15" placeholder="วว/ดด/ปปปป">
+                    <span class="error">* &emsp;ตัวอย่าง 1 มกราคม พ.ศ. 2549  &emsp;01/01/2549 <?php echo $emailErr; ?></span>
+                    =========================================================================================== -->
+                    &emsp; วัน เดือน ปี เกิด
+                    <select id="myOptionDD" onchange="setValueDD(this,'xm1s040dd','xm1s041dd')">
+                        <option selected>-วันที่-</option>
+                        <option value="01">01</option>
+                        <option value="02">02</option>
+                        <option value="03">03</option>
+                        <option value="04">04</option>
+                        <option value="05">05</option>
+                        <option value="06">06</option>
+                        <option value="07">07</option>
+                        <option value="08">08</option>
+                        <option value="09">09</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="16">16</option>
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+                        <option value="21">21</option>
+                        <option value="22">22</option>
+                        <option value="23">23</option>
+                        <option value="24">24</option>
+                        <option value="25">25</option>
+                        <option value="26">26</option>
+                        <option value="27">27</option>
+                        <option value="28">28</option>
+                        <option value="29">29</option>
+                        <option value="30">30</option>
+                        <option value="31">31</option>
+                    </select>
+                    <input type="hidden" name="xm1s040dd" id="xm1s040dd" size="2">
+                    <input type="hidden" name="xm1s041dd" id="xm1s041dd" size="2">
+
+                    <script type="text/javascript">
+                        function setValueDD(e, target40dd, target41dd) {
+                            var seclectedText = e.options[e.selectedIndex].text;
+                            document.getElementById(target40dd).value = seclectedText;
+
+                            var seclectedValue = e.value;
+                            document.getElementById(target41dd).value = seclectedValue;
+                        }
+                    </script>
+
+                    <select id="myOptionMM" onchange="setValueMM(this,'xm1s040mm','xm1s041mm')">
+                        <option selected>-เดือน-</option>
+                        <option value="01">มกราคม</option>
+                        <option value="02">กุมภาพันธ์</option>
+                        <option value="03">มีนาคม</option>
+                        <option value="04">เมษายน</option>
+                        <option value="05">พฤษภาคม</option>
+                        <option value="06">มิถุนายน</option>
+                        <option value="07">กรกฎาคม</option>
+                        <option value="08">สิงหาคม</option>
+                        <option value="09">กันยายน</option>
+                        <option value="10">ตุลาคม</option>
+                        <option value="11">พฤศจิกายน</option>
+                        <option value="12">ธันวาคม</option>
+                    </select>
+                    <input type="hidden" name="xm1s040mm" id="xm1s040mm" size="15">
+                    <input type="hidden" name="xm1s041mm" id="xm1s041mm" size="15">
+
+                    <script type="text/javascript">
+                        function setValueMM(e, target40mm, target41mm) {
+                            var seclectedText = e.options[e.selectedIndex].text;
+                            document.getElementById(target40mm).value = seclectedText;
+
+                            var seclectedValue = e.value;
+                            document.getElementById(target41mm).value = seclectedValue;
+                        }
+                    </script>
+
+                    <select id="myOptionYY" onchange="setValueYY(this,'xm1s040yy','xm1s041yy')">
+                        <option selected>-พ.ศ.-</option>
+                        <option value="2546">2546</option>
+                        <option value="2547">2547</option>
+                        <option value="2548">2548</option>
+                        <option value="2549">2549</option>
+                        <option value="2550">2550</option>
+                        <option value="2551">2551</option>
+                    </select>
+                    <input type="hidden" name="xm1s040yy" id="xm1s040yy" size="10">
+                    <input type="hidden" name="xm1s041yy" id="xm1s041yy" size="10">
+
+                    <script type="text/javascript">
+                        function setValueYY(e, target40yy, target41yy) {
+                            var seclectedText = e.options[e.selectedIndex].text;
+                            document.getElementById(target40yy).value = seclectedText;
+
+                            var seclectedValue = e.value;
+                            document.getElementById(target41yy).value = seclectedValue;
+                        }
+                    </script>
+
+                    <br><br>
+                    &emsp;E-mail: <input type="text" name="xm1s005" size="35" placeholder="Email Address">
+                    <span class="error">* <?php echo $emailErr; ?></span>
+                    <br><br><br>
+
+                    2. ที่อยู่ ปัจจุบัน <br><br>
+
+                        &emsp; เลขที่ <input type="text" name="xm1s050" size="15">
+                        <span class="error">* <?php echo $emailErr; ?></span>
+
+                        ถนน <input type="text" name="xm1s060" size="35">
+                        <span class="error">* <?php echo $emailErr; ?></span> <br><br>
+                        <p>
+                            &emsp;จังหวัด : *
+                            <!-- <span id="province"> -->
+                            <span id="province">
+                                <select>
+                                    <option value="0">- เลือกจังหวัด -</option>
+                                </select>
+                            </span>
+                        </p>
+                        <p>
+                            &emsp;อำเภอ : *
+                            <span id="amphur">
+                                <select>
+                                    <option value='0'>- เลือกอำเภอ -</option>
+                                </select>
+                            </span>
+                        </p>
+                        <p>
+                            &emsp;ตำบล : *
+                            <span id="district">
+                                <select>
+                                    <option value='0'>- เลือกตำบล -</option>
+                                </select>
+                            </span>
+                        </p>
+                        &emsp; รหัสไปรษณีย์ <input type="text" name="xm1s100" size="15">
+                        <span class="error">* <?php echo $emailErr; ?></span>
+
+                        &emsp; โทร <input type="text" name="xm1s110" size="15">
+                        <span class="error">* <?php echo $emailErr; ?></span> <br><br><br><br>
+
+                        &emsp;ข้อมูล บิดา <br><br>
+
+                        &emsp;ชื่อ <input type="text" name="xm1s120" size="35">
+                        <span class="error">* <?php echo $emailErr; ?></span>
+
+                        &emsp;สกุล <input type="text" name="xm1s130" size="35">
+                        <span class="error">* <?php echo $emailErr; ?></span>
+                        <br><br>
+
+                        &emsp; อาชีพ <input type="text" name="xm1s140" size="35">
+                        <span class="error">* <?php echo $emailErr; ?></span>
+
+                        &emsp; โทร <input type="text" name="xm1s150" size="35">
+                        <span class="error">* <?php echo $emailErr; ?></span>
+                        <br><br><br><br>
+
+                    ข้อมูล มารดา <br><br>
+
+                        &emsp; คำนำหน้านาม <input type="text" name="xm1s160" size="15" value="<?php echo $name; ?>">
+                        <span class="error">* <?php echo $nameErr; ?></span>
+
+                        ชื่อ <input type="text" name="xm1s170" size="35">
+                        <span class="error">* <?php echo $emailErr; ?></span>
+
+                        สกุล <input type="text" name="xm1s180" size="35">
+                        <span class="error">* <?php echo $emailErr; ?></span>
+                        <br><br>
+
+                        &emsp; อาชีพ <input type="text" name="xm1s190" size="35">
+                        <span class="error">* <?php echo $emailErr; ?></span>
+
+                        &emsp; โทร <input type="text" name="xm1s200" size="35">
+                        <span class="error">* <?php echo $emailErr; ?></span>
+
+                        <br><br><br><br>
+
+                    ข้อมูล ผู้ปกครอง <br><br>
+
+                        &emsp; คำนำหน้านาม <input type="text" name="xm1s210" size="15">
+                        <span class="error">* <?php echo $nameErr; ?></span>
+
+                        ชื่อ <input type="text" name="xm1s220" size="35">
+                        <span class="error">* <?php echo $emailErr; ?></span>
+
+                        สกุล <input type="text" name="xm1s230" size="35">
+                        <span class="error">* <?php echo $emailErr; ?></span>
+                        <br><br>
+
+                        &emsp; เกี่ยวข้องกับนักเรียน <input type="text" name="xm1s240" size="35">
+                        <span class="error">* <?php echo $emailErr; ?></span>
+
+                        &emsp; โทร <input type="text" name="xm1s250" size="35">
+                        <span class="error">* <?php echo $emailErr; ?></span>
+
+                        <br><br><br><br><br><br>
+
+                    3. กำลังศึกษาชั้น ป. 6 หรือจบ ป. 6
+                        <br><br>
+                        &emsp; จากโรงเรียน <input type="text" name="xm1s260" size="35">
+                        <span class="error">* <?php echo $emailErr; ?></span>
+                        <br><br>
+                        <p>
+                            &emsp;จังหวัด : *
+                            <!-- <span id="province"> -->
+                            <span id="province_3">
+                                <select>
+                                    <option value="0">- เลือกจังหวัด -</option>
+                                </select>
+                            </span>
+                        </p>
+                        <p>
+                            &emsp;อำเภอ : *
+                            <span id="amphur_3">
+                                <select>
+                                    <option value='0'>- เลือกอำเภอ -</option>
+                                </select>
+                            </span>
+                        </p>
+                        <br><br><br><br>
+                    4. สมัครโครงการ  (สมัครได้เพียง 1 โครงการ)
+                        <br><br>
+
+                        &emsp; โครงการ: <br><br>
+                        &emsp;&emsp; <input type="radio" name="xm1s290" value="1"> SMTE ผลการเรียนเฉลี่ยชั้นประถมศึกษาปีที่ 4 และ 5 ดังนี้<br><br>
+
+
+                        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; วิชาคณิตศาสตร์พื้นฐาน <input type="text" name="xm1s300">
+                        <span class="error">* <?php echo $emailErr; ?></span>
+                        &emsp;&emsp; วิทยาศาสตร์พื้นฐาน <input type="text" name="xm1s310">
+                        <span class="error">* <?php echo $emailErr; ?></span>
+                        <br><br>
+                        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; ผลการเรียนเฉลี่ยรวม <input type="text" name="xm1s320">
+                        <span class="error">* <?php echo $emailErr; ?></span>
+                        <br><br>
+
+                        &emsp;&emsp; <input type="radio" name="xm1s290" value="2"> IP แผนการเรียน ภาษาอังกฤษ - คณิตศาสตร์ <br><br>
+                        &emsp;&emsp; <input type="radio" name="xm1s290" value="3"> IP แผนการเรียน วิทยาศาสตร์ - คณิตศาสตร์ <br><br>
+                        &emsp;&emsp; <input type="radio" name="xm1s290" value="4"> IPC แผนการเรียน Cambridge <br><br>
+                        <span class="error"> <?php echo $genderErr; ?></span>
+
+                        &emsp;&emsp;&emsp;&emsp;&emsp; ผู้สมัครโครงการ IP เลือกข้อสอบ : <br><br>
+
+                        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; <input type="radio" name="xm1s330" value="th"> ภาษาไทย <br><br>
+                        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; <input type="radio" name="xm1s330" value="eng"> ภาษาอังกฤษ <br><br>
+                        <span class="error"><?php echo $genderErr; ?></span>
+                        <br><br>
+
+                    5. หลักฐานการสมัคร (เอกสาร Upload)  <br><br>
+
+                        &emsp;&emsp;&emsp; <input type="checkbox" name="sel_2" value="s1"> รูปถ่าย <br><br>
+                        &emsp;&emsp;&emsp; <input type="checkbox" name="sel_2" value="s2"> หนังสือรับรองผลการเรียนวิชาวิทยาศาสตร์และคณิตศาสตร์ หรือ ปพ. 1 (โครงการ SMTE)<br><br>
+                        &emsp;&emsp;&emsp; <input type="checkbox" name="sel_2" value="s3"> เอกสารความเป็นนักเรียน (โครงการ IP) <br><br>
+                        <span class="error"><?php echo $genderErr; ?></span>
+                        <br><br>
+                        &emsp;&emsp;&emsp;&emsp;&emsp;
+                        <button type="submit" name="submit"class="btn btn-primary" value="submit" >ส่งใบสมัคร</button>
+                        <?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (empty($_POST["price1"])) {
+        $nameErr = "Name is required";
+    } else {
+        $price1 = testInput($_POST["price1"]);
+    }
+}
+?>
+                </form>
+            </article>
+        </section>
+    </body>
+
+    <footer><br>
+        <p> &emsp;&emsp;โรงเรียนสตรีภูเก็ต <br>
+            &emsp;&emsp;1 ถนนดำรง ตำบลตลาดใหญ อำเภอเมือง จังหวัดภูเก็ต 83000  โทร 076-222368
+        </p>
+    </footer>
+</html>
