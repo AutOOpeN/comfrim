@@ -1,0 +1,175 @@
+<?php
+
+$servername = "localhost";
+$username = "root";
+$password = ",uok8,";
+$dbname = "SpkEntrance";
+
+// //  จัดรูปแบบ
+// echo "แสดงค่าต้นฉบับ ก่อนแก้ไข" . "<br/>";
+// echo "จังหวัด : " . $_POST['province'] . "<br/>";
+// echo "อำเภอ : " . $_POST['amphur'] . "<br/>";
+// echo "ตำบล : " . $_POST['district'] . "<br/>";
+// echo "<hr>";
+// echo "แสดงค่าหลังแก้ไข" . "<br/>";
+// // จังหวัด
+// echo "PROVINCE <br/>";
+$prov = SplitString($_POST['province']);
+// echo "<pre>";
+// print_r($prov);
+// echo "</pre>";
+// echo "<br>รหัสจังหวัด = " . $prov[0];
+// echo "<br>ชื่อจังหวัด = " . $prov[1];
+// echo "<hr/>";
+
+//อำเภอ
+// echo "AMPHUR <br/>";
+$am = SplitString($_POST['amphur']);
+// echo "<pre>";
+// print_r($am);
+// echo "</pre>";
+// echo "<br>รหัสอำเภอ = " . $am[0];
+// echo "<br>ชื่ออำเภอ = " . $am[1];
+// echo "<br>รหัสไปรษณีย์ = " . $am[2];
+// echo "<hr/>";
+
+//ตำบล
+// echo "DISTRICT <br/>";
+$dis = SplitString($_POST['district']);
+// echo "<pre>";
+// print_r($dis);
+// echo "</pre>";
+// echo "<br>รหัสตำบล = " . $dis[0];
+// echo "<br>ชื่อตำบล = " . $dis[1];
+
+// ==================================
+
+//$_POST['xm1s040']
+//$prov = ($_POST['province']);
+//echo $prov . "<hr>";
+$yyyymmdd = $_POST['myOptionYY'].$_POST['myOptionMM'].$_POST['myOptionDD'];
+//$Date_Time = date_time_set;
+echo $yyyymmdd . "<hr>";
+
+
+//   test
+
+$sql = "INSERT INTO m1_s(m1s003 , m1s010 , m1s011  
+, m1s020 , m1s030 , m1s040 , m1s050
+, m1s060 , m1s070 , m1s071 , m1s080 , m1s081 , m1s090 , m1s091 , m1s100
+, m1s110 , m1s120 , m1s130 , m1s140 , m1s150
+, m1s160 , m1s170 , m1s180 , m1s190 , m1s200
+, m1s210 , m1s220 , m1s230 , m1s240 , m1s250
+, m1s260 , m1s270 , m1s271 , m1s280 , m1s281 , m1s290 , m1s300
+, m1s310 , m1s320 , m1s330 )
+VALUES('" . $_POST['xm1s003'] . "','" . $_POST['xm1s010'] . "','" . $_POST['xm1s011'] . "'
+, '" . $_POST['xm1s020'] . "','" . $_POST['xm1s030'] . "', ". $yyyymmdd . "  ,'" . $_POST['xm1s050'] . "'
+, '" . $_POST['xm1s060'] . "','" . $dis[1] . "','" . $dis[0] . "','" . $am[1] . "','" . $am[0] . "','" . $prov[1] . "','" . $prov[0] . "','" . $am[2] . "'
+, '" . $_POST['xm1s110'] . "','" . $_POST['xm1s120'] . "','" . $_POST['xm1s130'] . "','" . $_POST['xm1s140'] . "','" . $_POST['xm1s150'] . "'
+, '" . $_POST['xm1s160'] . "','" . $_POST['xm1s170'] . "','" . $_POST['xm1s180'] . "','" . $_POST['xm1s190'] . "','" . $_POST['xm1s200'] . "'
+, '" . $_POST['xm1s210'] . "','" . $_POST['xm1s220'] . "','" . $_POST['xm1s230'] . "','" . $_POST['xm1s240'] . "','" . $_POST['xm1s250'] . "'
+, '" . $_POST['xm1s260'] . "','" . $am[1] . "','" . $am[0] . "','" . $prov[1] . "','" . $prov[0] . "','" . $_POST['xm1s290'] . "','" . $_POST['xm1s300'] . "'
+, '" . $_POST['xm1s310'] . "','" . $_POST['xm1s320'] . "','" . $_POST['xm1s330'] . "')";
+
+//
+
+echo "<br> SQL string = " . $sql . "<br>" ;
+
+//upload image
+$img_extension = pathinfo(basename($_FILES['file1']['name']),PATHINFO_EXTENSION);
+$new_image_name = 'img_'.uniqid().".".$img_extension;
+$file1_path = "file1/";
+$upload_path = $file1_path.$new_image_name;
+echo $upload_path."<br>";
+
+$file02_extension = pathinfo(basename($_FILES['file2']['name']),PATHINFO_EXTENSION);
+$new_file02_name = 'file02_'.uniqid().".".$file02_extension;
+$file2_path = "file2/";
+$upload_path02 = $file2_path.$new_file02_name;
+echo $upload_path02."<br>";
+
+//uploading
+$status_file1 = move_uploaded_file($_FILES['file1']['tmp_name'], $upload_path);
+if ($status_file1==FALSE) {
+    echo "ไม่สามารถ upload รูปได้";
+    exit();
+}
+
+    //file02
+    $status_file2 = move_uploaded_file($_FILES['file2']['tmp_name'], $upload_path02);
+    if ($status_file2==FALSE) {
+        echo "ไม่สามารถ upload ไฟล์ 2 ได้";
+        exit();
+    }
+
+/*
+try {
+    $conn = new PDO("mysql:host=$servername;dbname=$dbname;charset=utf8", $username, $password);
+    // set the PDO error mode to exception
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+     $sql = "INSERT INTO m1_s(m1s003 , m1s010 , m1s011  
+                            , m1s020 , m1s030 , m1s040 , m1s050
+                            , m1s060 , m1s070 , m1s071 , m1s080 , m1s081 , m1s090 , m1s091 , m1s100
+                            , m1s110 , m1s120 , m1s130 , m1s140 , m1s150
+                            , m1s160 , m1s170 , m1s180 , m1s190 , m1s200
+                            , m1s210 , m1s220 , m1s230 , m1s240 , m1s250
+                            , m1s260 , m1s270 , m1s271 , m1s280 , m1s281 , m1s290 , m1s300
+                            , m1s310 , m1s320 , m1s330 )
+                    VALUES('" . $_POST['xm1s003'] . "','" . $_POST['xm1s010'] . "','" . $_POST['xm1s011'] . "'
+                         , '" . $_POST['xm1s020'] . "','" . $_POST['xm1s030'] . "', ". $yyyymmdd . "  ,'" . $_POST['xm1s050'] . "'
+                         , '" . $_POST['xm1s060'] . "','" . $dis[1] . "','" . $dis[0] . "','" . $am[1] . "','" . $am[0] . "','" . $prov[1] . "','" . $prov[0] . "','" . $am[2] . "'
+                         , '" . $_POST['xm1s110'] . "','" . $_POST['xm1s120'] . "','" . $_POST['xm1s130'] . "','" . $_POST['xm1s140'] . "','" . $_POST['xm1s150'] . "'
+                         , '" . $_POST['xm1s160'] . "','" . $_POST['xm1s170'] . "','" . $_POST['xm1s180'] . "','" . $_POST['xm1s190'] . "','" . $_POST['xm1s200'] . "'
+                         , '" . $_POST['xm1s210'] . "','" . $_POST['xm1s220'] . "','" . $_POST['xm1s230'] . "','" . $_POST['xm1s240'] . "','" . $_POST['xm1s250'] . "'
+                         , '" . $_POST['xm1s260'] . "','" . $am[1] . "','" . $am[0] . "','" . $prov[1] . "','" . $prov[0] . "','" . $_POST['xm1s290'] . "','" . $_POST['xm1s300'] . "'
+                         , '" . $_POST['xm1s310'] . "','" . $_POST['xm1s320'] . "','" . $_POST['xm1s330'] . "')";
+    // use exec() because no results are returned
+    $conn->exec($sql);
+    echo "New record created successfully";
+    
+    }
+catch(PDOException $e)
+    {
+    echo $sql . "<br>" . $e->getMessage();
+    }
+
+
+    function SplitString($str)
+    {
+        $checkAt = substr_count($str, "@"); //นับจำนวน @
+        if ($checkAt == 1) {
+            $myString[0] = str_replace(strchr($str, "@"), "", $str); // id
+            $myString[1] = substr($str, (strpos($str, "@") + 1), (strlen($str) - 1)); // name
+            return $myString;
+        } elseif ($checkAt == 2) {
+            $myString[0] = str_replace(strchr($str, "@"), "", $str); //id
+            $myString[1] = substr(substr($str, (strpos($str, "@") + 1), (strlen($str) - 1)), 0, strpos(substr($str, (strpos($str, "@") + 1), (strlen($str) - 1)), "@"));
+            $myString[2] = substr(substr($str, (strpos($str, "@") + 1), (strlen($str) - 1)), (strpos(substr($str, (strpos($str, "@") + 1), (strlen($str) - 1)), "@") + 1), (strlen(substr($str, (strpos($str, "@") + 1), (strlen($str) - 1))) - 1));
+            return $myString;
+        } else {
+            return false;
+        }
+    
+    }
+
+$conn = null;
+*/
+
+function SplitString($str)
+{
+    $checkAt = substr_count($str, "@"); //นับจำนวน @
+    if ($checkAt == 1) {
+        $myString[0] = str_replace(strchr($str, "@"), "", $str); // id
+        $myString[1] = substr($str, (strpos($str, "@") + 1), (strlen($str) - 1)); // name
+        return $myString;
+    } elseif ($checkAt == 2) {
+        $myString[0] = str_replace(strchr($str, "@"), "", $str); //id
+        $myString[1] = substr(substr($str, (strpos($str, "@") + 1), (strlen($str) - 1)), 0, strpos(substr($str, (strpos($str, "@") + 1), (strlen($str) - 1)), "@"));
+        $myString[2] = substr(substr($str, (strpos($str, "@") + 1), (strlen($str) - 1)), (strpos(substr($str, (strpos($str, "@") + 1), (strlen($str) - 1)), "@") + 1), (strlen(substr($str, (strpos($str, "@") + 1), (strlen($str) - 1))) - 1));
+        return $myString;
+    } else {
+        return false;
+    }
+
+}
+?>

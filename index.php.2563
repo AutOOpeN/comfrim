@@ -1,0 +1,120 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ระบบรับนักเรียน  โครงการพิเศษ ปีการศึกษา 2563</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="../../../bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+
+    <script src="https://unpkg.com/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script src="spk.js"></script>
+    <style>
+    p.my_time {
+        text-align: center;
+        font-size: 50px;
+        margin-top: 0px;
+    }
+
+
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <img src="../../../spkimg/head1.gif" class="img-fluid pull-center">
+        <br />
+        <br />
+        <br />
+        <p class="my_time">เปิดรับสมัครวันที่ 22-26 กุมภาพันธ์ พ.ศ. 2563</p>
+        <hr>
+        <h3>ประกาศโรงเรียนสตรีภูเก็ต เรื่อง การรับสมัครนักเรียนเข้าเรียนโครงการพิเศษ </h3>
+        <br>
+        <ul>
+            <li><a href="pdf/M1_SMTE_IP.pdf">ระดับชั้นมัธยมศึกษาปีที่ 1 &raquo;</a></li>
+            <li><a href="pdf/M4_SMTE_IP.pdf">ระดับมัธยมศึกษาปีที่ 4 &raquo;</a></li>
+        </ul>
+        <table class="table table-bordered table-hover text-center">
+            <thead>
+                <tr class="table-primary">
+                    <th scope="col">ระดับชั้น</th>
+                    <th scope="col">รับสมัคร</th>
+                    <th scope="col">สอบคัดเลือก</th>
+                    <th scope="col">ประกาศผล</th>
+                    <th scope="col">รายงานตัว</th>
+                    <th scope="col">มอบตัว</th>                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="table-primary">
+                    <td colspan="6">ชั้นมัธยมศึกษาปีที่ 1</td>
+                </tr>
+                <tr class="table-primary">
+                    <td class="text-left"scope="row">-SMTE<br/>-IP และ IPC</td>
+                    <td>22-26 ก.พ. 63</td>
+                    <td>7 มี.ค. 63</td>
+                    <td>11 มี.ค. 63</td>
+                    <td>13 มี.ค. 63 (เช้า)</td>
+                    <td>17 มี.ค. 63</td>
+                </tr>
+                <tr class="table-primary">
+                    <td colspan="6">ชั้นมัธยมศึกษาปีที่ 4</td>
+                </tr>
+                <tr class="table-primary">
+                    <td class="text-left" scope="row">-SMTE<br/>-IP และ IPC</td>
+                    <td>22-26 ก.พ. 63</td>
+                    <td>8 มี.ค. 63</td>
+                    <td>12 มี.ค. 63</td>
+                    <td>13 มี.ค. 63 (บ่าย)</td>
+                    <td>18 มี.ค. 63</td>
+                </tr>
+            </tbody>
+        </table>
+        <hr>
+        <!--<p class="text-center" id="block_time"></p>-->
+
+    </div>
+    <div class="footer">
+        <p><i class="far fa-copyright"></i> <a href="http://www.satreephuket.ac.th">โรงเรียนสตรีภูเก็ต </a> 1 ถนนดำรง
+            ตำบลตลาดใหญ่ อำเภอเมือง จังหวัดภูเก็ต 83000 โทร 076-222368 </p>
+    </div>
+    <script>
+    // Set the date we're counting down to
+    var countDownDate = new Date("Feb 22, 2020 08:00:00").getTime();
+
+    // Update the count down every 1 second
+    var x = setInterval(function() {
+
+        // Get today's date and time
+        var now = new Date().getTime();
+
+        // Find the distance between now and the count down date
+        var distance = countDownDate - now;
+
+        // Time calculations for days, hours, minutes and seconds
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Output the result in an element with id="block_time"
+        document.getElementById("block_time").innerHTML =  days + " วัน " + hours +
+            " ชั่วโมง " +
+            minutes + " นาที " + seconds + " วินาที ";
+
+        // If the count down is over, write some text 
+        if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("block_time").innerHTML = "EXPIRED";
+        }
+    }, 1000);
+    </script>
+
+</body>
+
+</html>

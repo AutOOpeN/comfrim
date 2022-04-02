@@ -1,0 +1,19 @@
+Time : 01:26:44
+SQLSTATE[HY000]: General error: 2014 Cannot execute queries while other unbuffered queries are active.  Consider using PDOStatement::fetchAll().  Alternatively, if your code is only ever going to run against mysql, you may enable query buffering by setting the PDO::MYSQL_ATTR_USE_BUFFERED_QUERY attribute.
+Raw SQL : lock tables my write
+
+Time : 01:10:09
+SQLSTATE[HY000]: General error: 2014 Cannot execute queries while other unbuffered queries are active.  Consider using PDOStatement::fetchAll().  Alternatively, if your code is only ever going to run against mysql, you may enable query buffering by setting the PDO::MYSQL_ATTR_USE_BUFFERED_QUERY attribute.
+Raw SQL : LOCK TABLES my WRITE
+
+Time : 01:10:06
+SQLSTATE[HY000]: General error: 2014 Cannot execute queries while other unbuffered queries are active.  Consider using PDOStatement::fetchAll().  Alternatively, if your code is only ever going to run against mysql, you may enable query buffering by setting the PDO::MYSQL_ATTR_USE_BUFFERED_QUERY attribute.
+Raw SQL : LOCK TABLES my WRITE
+
+Time : 01:09:02
+SQLSTATE[HY000]: General error: 2014 Cannot execute queries while other unbuffered queries are active.  Consider using PDOStatement::fetchAll().  Alternatively, if your code is only ever going to run against mysql, you may enable query buffering by setting the PDO::MYSQL_ATTR_USE_BUFFERED_QUERY attribute.
+Raw SQL : LOCK TABLES my WRITE
+
+Time : 00:47:47
+SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'id' cannot be null
+Raw SQL : INSERT INTO my(id,name,suname) VALUES(?,?,?)

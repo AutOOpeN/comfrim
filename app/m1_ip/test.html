@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>ระบบรับนักเรียน ม. 1 โครงการพิเศษ IP ปีการศึกษา 2562</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" type="text/css" href="../../../bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="../style.css">
+    </head>
+    <script src="https://unpkg.com/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script src="spk.js"></script>
+    <body>
+        <div class=" text-center">
+        <img src="../../../spkimg/head1.gif" class ="img-fluid pull-center">
+            <div class="container">
+                <h1 class="jumbotron-heading">ระบบรับนักเรียนปีการศึกษา 2562 </h1>
+                <p class="lead text-muted">ใบสมัครเข้าศึกษาโครงการห้องเรียนพิเศษ IP โรงเรียนสตรีภูเก็ต </p>
+                <p class="lead text-muted">ชั้นมัธยมศึกษาปีที่ 1 ปีการศึกษา 2562</p>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="alert alert-success text-center" role="alert">
+              <h4 class="alert-heading">ลงทะเบียนสำเร็จ</h4>
+              <p>กรุณาพิมพ์แบบฟอร์มชำระเงิน เพื่อนำไปชำระเงินที่เคาน์เตอร์ธนาคารกรุงไทย ตั้งแต่วันนี้ ถึงวันที่ 28 กุมภาพันธ์ 2562</p>
+
+                          <form action="../bill/payment.php" method="post">
+                <input type="hidden" name="id_card" value=<?php echo $_POST['xm1s003']; ?>
+                <input type="hidden" name="plan" value="m1_ip">
+                <button class="btn btn-primary" type="submit"><i class="fas fa-print"></i> พิมพ์ใบชำระเงินค่าสมัครสอบ</button>
+            </form>
+              <hr>
+              <p class="mb-0">สามารถตรวจสอบรายชื่อผู้มีสิทธิ์สอบและสถานที่สอบในวันที่ 6 มีนาคม 2562</p>
+            </div>
+
+       </div>
+
+        <hr>
+        <div class="footer">
+                <p><i class="far fa-copyright"></i> <a href="http://www.satreephuket.ac.th">โรงเรียนสตรีภูเก็ต </a> 1 ถนนดำรง ตำบลตลาดใหญ่ อำเภอเมือง จังหวัดภูเก็ต 83000  โทร 076-222368 </p>
+</div>
+
+
+
+    </body>
+
+</html>

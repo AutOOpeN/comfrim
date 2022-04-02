@@ -1,0 +1,5 @@
+Time : 06:05:17
+SQLSTATE[HY000] [1049] Unknown database 'Database'
+
+Time : 06:05:11
+SQLSTATE[HY000] [1049] Unknown database 'Database'
